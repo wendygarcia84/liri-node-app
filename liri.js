@@ -7,8 +7,12 @@ var fs = require("fs");
 var keys = require("./keys.js");
 var spotify = new Spotify(keys.spotify);
 
-var command = process.argv[2];
+var command = "";
 var item = "";
+
+command = process.argv[2];
+
+console.log(command);
 if (process.argv[3]) {
     item = process.argv[3]
 }
@@ -19,26 +23,39 @@ switch (command) {
         if (!process.argv[3]) {
             item = "The Sing - Ace of base";
         } 
-        spotify.search({type: 'track' , query: item, limit: 1 }, function(err, data) {
-            if (err) {
-                return console.log('Error occurred: ' + err);
-            }
-            console.log("Name: " + data.tracks.items[0].name); //name, artists[0], external_urls.spotify, album[0] 
-            console.log("Artists: " + data.tracks.items[0].artists[0].name);
-            console.log("URL: "+ data.tracks.items[0].external_urls.spotify);
-            console.log("Album: " + data.tracks.items[0].album.name);
-        });
+        spotifyThis(item);
     break;
     
     case "movie-this":
         if (!process.argv[3]) {
             item = "Mr. Nobody";
         }
+        movieThis(item);
 
-        var queryUrl = "http://www.omdbapi.com/?t=" + item + "&y=&plot=short&apikey=trilogy";
+    case "do-what-it-says":
+        doWahtItSays();
+    break;
+
+    default:
+        console.log("Invalid command");
+}
+
+function spotifyThis (item) {
+    spotify.search({type: 'track' , query: item, limit: 1 }, function(err, data) {
+        if (err) {
+            return console.log('Error occurred: ' + err);
+        }
+        console.log("Name: " + data.tracks.items[0].name); //name, artists[0], external_urls.spotify, album[0] 
+        console.log("Artists: " + data.tracks.items[0].artists[0].name);
+        console.log("URL: "+ data.tracks.items[0].external_urls.spotify);
+        console.log("Album: " + data.tracks.items[0].album.name);
+    });
+}
+
+function movieThis (item) {
+    var queryUrl = "http://www.omdbapi.com/?t=" + item + "&y=&plot=short&apikey=trilogy";
 
         axios.get(queryUrl).then(function (response) {
-            console.log(response);
             console.log("Title: " + response.data.Title);
             console.log("Year: " + response.data.Year);
             console.log("IMDB Rating: " + response.data.Rated);
@@ -47,20 +64,22 @@ switch (command) {
             console.log("Plot: " + response.data.Plot);
             console.log("Actors: " + response.data.Actors);
         }); 
-    break;
+}
 
-    case "do-what-it-says":
-        fs.readFile("random.txt", "utf8", function (err, data) {
-            if (err) {
-                return console.log(err);
-            }
+function doWahtItSays () {
+    fs.readFile("random.txt", "utf8", function (err, data) {
+        if (err) {
+            return console.log(err);
+        }
+        var dataArr = data.split(",");
 
-            var dataArr = data.split(",");
-
-
-        });
-    break;
-
-    default:
-        console.log("Invalid");
+        command = dataArr[0];
+        item = dataArr[1];
+        
+        if (command === "spotify-this-song") {
+            spotifyThis(item);
+        } else if (command === "movie-this") {
+            movieThis(item);
+        }
+    });
 }
