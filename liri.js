@@ -70,11 +70,14 @@ function concertThis(item) {
     axios.get(queryUrl).then(function (response) {
         //console.log(JSON.stringify(response.data, null, 2));
         if ( response.data[0]) {
-            console.log("Venue: " + response.data[0].venue.name)
-            console.log(`Location ${response.data[0].venue.city}, ${response.data[0].venue.region}`);
-            // Date of the Event (use moment to format this as "MM/DD/YYYY")
-            date = moment(response.headers.date, "ddd, DD MMM YYYY hh:mm:ss");
-            console.log(`Date: ${date.format("MM/DD/YYYY")}`);
+            for (var i = 0 ; i < 5 && i < response.data.length ; i++) {
+                console.log("Venue: " + response.data[i].venue.name)
+                console.log(`Location ${response.data[i].venue.city}, ${response.data[i].venue.region}`);
+                // Date of the Event (use moment to format this as "MM/DD/YYYY")
+                date = moment(response.headers.date, "ddd, DD MMM YYYY hh:mm:ss");
+                console.log(`Date: ${date.format("MM/DD/YYYY")}`);
+                console.log("--------------------------")
+            }
         } else {
             console.log("No concerts were found!")
         }
@@ -88,10 +91,12 @@ function spotifyThis (item) {
         if (err) {
             return console.log('Error occurred: ' + err);
         }
-            console.log("Name: " + data.tracks.items[0].name); //name, artists[0], external_urls.spotify, album[0] 
-            console.log("Artists: " + data.tracks.items[0].artists[0].name);
-            console.log("URL: "+ data.tracks.items[0].external_urls.spotify);
-            console.log("Album: " + data.tracks.items[0].album.name);
+          
+                console.log("Name: " + data.tracks.items[i].name); //name, artists[0], external_urls.spotify, album[0] 
+                console.log("Artists: " + data.tracks.items[i].artists[i].name);
+                console.log("URL: "+ data.tracks.items[i].external_urls.spotify);
+                console.log("Album: " + data.tracks.items[i].album.name);
+            
         
     });
 }
