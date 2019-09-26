@@ -62,39 +62,39 @@ node liri.js
 Since this app is interactive, it doesn't need arguments. The user will input the data later on.
 
 
-![1](screenshots/1.png)
+![1](screenshots/1.PNG)
 
 
 3. Second, the app will show you the list of commands. Use the `down arrow` key to navigate through it and click `Enter` once you've made a selection. For this example, we will choose **concert-this**.
 
 
-![2](screenshots/2.png)
+![2](screenshots/2.PNG)
 
 
 4. Now it's time to give the app a search query. Type the name of the artist, song, or movie you want information about, and hit the `Enter` key. For this example, we will use **Ariana Grande**.
 
 
-![8](screenshots/8.png)
+![8](screenshots/8.PNG)
 
 
 5. The app now will show you a list of the next following events for that specific artist, including the venue, location, and date of the concert.
 
 
-![9](screenshots/9.png)
+![9](screenshots/9.PNG)
 
 6. The other commands work similarly. Here are some examples of the possible results:
 
     * **spotify-this-song**
     
-    ![5](screenshots/5.png)
+    ![5](screenshots/5.PNG)
 
     * **movie-this**
 
-    ![6](screenshots/6.png)
+    ![6](screenshots/6.PNG)
 
     * **do-what-it-says** Reads the command and query from a `random.txt` file. In this case, when the app asks for a query, just hit enter.
 
-    ![7](screenshots/7.png)
+    ![7](screenshots/7.PNG)
 
 ## Github
 
