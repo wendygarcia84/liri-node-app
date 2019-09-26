@@ -11,6 +11,12 @@ LIRI is like iPhone's SIRI. LIRI is a *Language Interpretation and Recognition I
 
 The user might as well choose a search query within that category, by typing it into the command line, and get information back printed on the console.
 
+## Organization
+
+The app is organized in two modules. One is the [keys.js] file and the second is [liri.js]. Inside [keys.js] live the Spotify API keys only. Inside [liri.js] are the methods that inquire the user and those that retrieve the user's input to triger the user's chosen command.
+
+When the user makes their command selection, the app calls a `doEverything` method and pass the user's command and search query as arguments. `doEverything` takes the parameters and uses the `switch` method to discriminate between commands and trigger their respecting function.
+
 ## Technologies
 
 * Javascript
@@ -27,7 +33,7 @@ The user might as well choose a search query within that category, by typing it 
 
 ## User's guide
 
-1. First off, make sure you have Node.js installed in your computer. Second,open the console and clone this repo into the folder you want to store the app. Next, navigate to the newly created app's directory. Then, create a `package.json` file by typing npm init, and install the dependencies by typing npm install. You'll need to use you're own Spotify API key.
+1. First off, make sure you have Node.js installed in your computer. Second,open the console and clone this repo into the folder you want to store the app. Next, navigate to the newly created app's directory. Then, create a [package.json] file by typing npm init, and install the dependencies by typing npm install. You'll need to use you're own Spotify API key.
 
 2. To run the app, navigate to it's directory and type 'node liri.js' and press `Enter`. Since this app is interactive, it doesn't need arguments. The user will input the data later on.
 
@@ -69,3 +75,8 @@ The user might as well choose a search query within that category, by typing it 
 ## Github
 
 To get this app's repo, visit [Gitub](https://github.com/wendygarcia84/liri-node-app)
+
+## Contact me
+
+This proyect is created and maintained by *Wendy Garcia*. 
+Contact me: <wendy.fern84@gmail.com>
